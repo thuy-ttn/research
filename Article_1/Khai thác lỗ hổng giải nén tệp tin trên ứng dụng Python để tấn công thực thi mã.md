@@ -51,7 +51,7 @@ extract_path = os.path.join(app.config['UPLOADED_PATH'], filename[:-4])
 ```
 ta thấy biến `filename` được kiểm soát bởi người dùng. Nếu ta set giá trị của `filename` thành `../../test.zip` ta có thể khai thác được lỗ hổng Path Traversal.
 Lỗ hổng này cho phép ta giải nén file vào vị trí bất kì trên server thay vì thư mục gốc ban đầu.  
-![Image 1](/img_1.png)
+![Image 1](/Article_1/img_1.png)
 
 ## Phương thức tấn công
 Sau khi phát hiện lỗ hổng Path Traversal, ta cần tìm cách khai thác lỗ hổng đó. 
@@ -72,9 +72,9 @@ File `app.py` là file main của ứng dụng, import `settings.py` từ direct
 tức là nếu ta ghi đè được mã vào file `config/__init__.py`, ta có thể tấn công thực thi mã.  
 Để tấn công lỗ hổng này, ta sẽ tạo 1 file zip chứa file `__init__.py`, chứa mã tạo reverse shell đến máy attacker.
 Tên file zip sẽ lợi dụng lỗ hổng Path Traversal, để sau khi giải nén, ta được file `__init__.py` trong thư mục `config`  
-![Image_2](/img_2.png)  
+![Image_2](/Article_1/img_2.png)  
 Sau khi upload file lên server thành công, ứng dụng sẽ tự động reload và chạy file `config/__init__.py`, trả về máy attacker một reverse shell.  
-![Image_3](/img_3.png)
+![Image_3](/Article_1//img_3.png)
 
 ## Tính khả dụng & Cách phòng chống
 Việc khai thác lỗ hổng này phụ thuộc vào nhiều yếu tố:
